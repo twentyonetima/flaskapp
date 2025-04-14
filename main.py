@@ -1,12 +1,14 @@
 from flask import Flask
-from src.routes import bp
+from src.routes.products_routes import product_bp
+from src.routes.analytics_routes import analytics_bp
 from src.database import db_session, init_db
 
 
 def create_app():
     app = Flask(__name__)
 
-    app.register_blueprint(bp)
+    app.register_blueprint(product_bp)
+    app.register_blueprint(analytics_bp)
 
     @app.teardown_appcontext
     def shutdown_session(exception=None):
