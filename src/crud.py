@@ -16,16 +16,15 @@ def create_product(name, category_name):
     return product
 
 def update_product(product, data):
-
-    if 'name' in data:
+    if data.get('name') is not None:
         product.name = data['name']
 
-    if 'category' in data:
+    if data.get('category') is not None:
         category = Category.query.filter_by(name=data['category']).first()
         if not category:
             category = Category(name=data['category'])
             db_session.add(category)
-
+            db_session.commit()
         product.category = category
 
     db_session.commit()
