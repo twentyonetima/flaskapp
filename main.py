@@ -1,7 +1,7 @@
 from flask import Flask
 from src.routes.products_routes import product_bp
 from src.routes.analytics_routes import analytics_bp
-from src.database import db_session, init_db
+from src.database import db_session
 
 
 def create_app():
@@ -18,6 +18,5 @@ def create_app():
 
 
 if __name__ == '__main__':
-    init_db()
     app = create_app()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

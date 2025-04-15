@@ -1,5 +1,6 @@
 from logging.config import fileConfig
 from src.database import Base
+from src.models import Category, Product, Sale
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
